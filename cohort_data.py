@@ -196,7 +196,7 @@ def find_cohort_by_student_name(student_list):
     """
 
 
-    input_name = input("Which student are you looking for?")
+    input_name = input("Which student are you looking for?").title()
 
 
     for student in student_list:
