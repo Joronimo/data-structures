@@ -156,10 +156,21 @@ def all_students_tuple_list(filename):
     """
     the_file = open(filename)
 
-
     student_list = []
 
-    # Code goes here
+    for line in the_file:
+        line = line.rstrip() #cut off whitespace
+        harry_potter_data = line.split("|")
+
+        full_name = harry_potter_data[0] + " " + harry_potter_data[1]
+        house = harry_potter_data[2]
+        advisor = harry_potter_data[3]
+        cohort = harry_potter_data[4]
+
+        if cohort != "G" and cohort != "I":
+            my_tuple = (full_name, house, advisor, cohort)
+
+            student_list.append(my_tuple)
 
     return student_list
 
