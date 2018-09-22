@@ -213,7 +213,7 @@ def find_cohort_by_student_name(student_list):
 
 
 def find_name_duplicates(filename):
-    """TODO: Return a set of student last names that have duplicates.
+    """TODO: Return a set of student last names that occur in each cohort.
 
     Iterate over the data to find any last names that exist across all cohorts.
     Use set operations (set math) to create and return a set of these names.
@@ -225,10 +225,24 @@ def find_name_duplicates(filename):
     """
     the_file = open(filename)
 
+    list_of_last_names = []
+
+    for line in the_file:
+        line = line.rstrip() #cut off whitespace
+        harry_potter_data = line.split("|")
+
+        last_name = harry_potter_data[1]
+
+        list_of_last_names.append(last_name)
 
     duplicate_names = set()
 
-    # Code goes here
+    start_index = 0
+    for name in list_of_last_names:
+        for other_name in list_of_last_names[start_index+1:]:
+            if name == other_name:
+                duplicate_names.add(name)
+        start_index += 1
 
     return duplicate_names
 
